@@ -28,28 +28,30 @@ const CreateTypeReport = () => {
   };
 
   return (
-    <div>
-      <h2>Crear Tipo de Reporte</h2>
+    <div className="container">
+      <h2 className="mt-4">Crear Tipo de Reporte</h2>
       <form onSubmit={handleSubmit}>
-        <div>
-          <label htmlFor="name">Nombre:</label>
+        <div className="mb-3">
+          <label htmlFor="name" className="form-label">Nombre:</label>
           <input
             type="text"
             id="name"
+            className="form-control"
             value={name}
             onChange={e => setName(e.target.value)}
           />
         </div>
-        <div>
-          <label htmlFor="description">Descripción:</label>
+        <div className="mb-3">
+          <label htmlFor="description" className="form-label">Descripción:</label>
           <input
             type="text"
             id="description"
+            className="form-control"
             value={description}
             onChange={e => setDescription(e.target.value)}
           />
         </div>
-        <button type="submit">Crear</button>
+        <button type="submit" className="btn btn-primary">Crear</button>
       </form>
     </div>
   );

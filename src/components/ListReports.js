@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import axios from 'axios';
 
 const ListReports = () => {
@@ -22,8 +23,10 @@ const ListReports = () => {
         <thead className="thead-dark">
           <tr>
             <th>ID</th>
-            <th>Título</th>
-            <th>Descripción</th>
+            <th>TITULO</th>
+            <th>TIPO REPORTE</th>
+            <th>PROYECTO</th>
+            <th>ACCIONES</th>
           </tr>
         </thead>
         <tbody>
@@ -31,7 +34,13 @@ const ListReports = () => {
             <tr key={report.REPO_ID}>
               <td>{report.REPO_ID}</td>
               <td>{report.REPO_TITLE}</td>
-              <td>{report.REPO_DESCRIPTION}</td>
+              <td>{report.TYRE_NAME}</td>
+              <td>{report.PROJ_NAME}</td>
+              <td>
+                <Link to={`/detalle-reporte/${report.REPO_ID}`} className="btn btn-primary">
+                  Ver detalle
+                </Link>
+              </td>
             </tr>
           ))}
         </tbody>

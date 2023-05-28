@@ -20,6 +20,8 @@ import ListIncidents from './components/ListIncidents';
 import ListTasks from './components/ListTasks';
 import ListActivities from './components/ListActivities';
 import ReportDetails from './components/ReportDetails';
+import Example from './components/Example';
+import CombinedColumnsExample from './components/Example';
 // Importa otros componentes necesarios, incluyendo el componente Dashboard
 
 const App = () => {

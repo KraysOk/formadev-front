@@ -18,13 +18,22 @@ const ProjectList = () => {
   return (
     <div className="container">
       <h2 className="mt-4">Lista de Proyectos</h2>
-      <ul className="list-group">
-        {projects.map((project) => (
-          <li key={project.PROJ_ID} className="list-group-item">
-            <strong>Nombre:</strong> {project.PROJ_NAME} | <strong>Descripción:</strong> {project.PROJ_DESCRIPTION}
-          </li>
-        ))}
-      </ul>
+      <table className="table">
+        <thead>
+          <tr>
+            <th>Nombre</th>
+            <th>Descripción</th>
+          </tr>
+        </thead>
+        <tbody>
+          {projects.map((project) => (
+            <tr key={project.PROJ_ID}>
+              <td>{project.PROJ_NAME}</td>
+              <td>{project.PROJ_DESCRIPTION}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
     </div>
   );
 };
