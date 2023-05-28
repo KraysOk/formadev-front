@@ -5,6 +5,10 @@ import ReactDataGrid from 'react-data-grid';
 import 'react-data-grid/lib/styles.css';
 import './ReportDetails.css';
 import ButtonCorner from './ButtonCorner';
+import CreateActivity from './CreateActivity';
+import CreateTask from './CreateTask';
+import CreateIncident from './CreateIncident'
+
 
 const ReportDetails = () => {
   const { reportId } = useParams();
@@ -94,7 +98,7 @@ const ReportDetails = () => {
 
 */}
   
- 
+console.log(activities);
   const activitiesRows = [];
 
   
@@ -115,7 +119,6 @@ activities.forEach((activity) => {
     };
 
   // Filtrar los objetos que pertenecen a la categoría A
-  console.log(tasks);
   const filteredTasks = tasks.filter((obj) => obj.ACTI_ID === ACTI_ID);
   // Imprimir los objetos filtrados
   filteredTasks.forEach((task) => {
@@ -151,8 +154,6 @@ activities.forEach((activity) => {
     { key: 'activityName', name: 'Actividad' },
     { key: 'incidentValue', name: 'Incidente' },
   ];
-
-  console.log(activitiesRows); 
 
   return (
     <div className="container">
@@ -231,6 +232,20 @@ activities.forEach((activity) => {
             */}
           </tbody>
         </table>
+
+        <div className='container'>
+          <div className='row'>
+            <div className='col-4'>
+              <CreateActivity />
+            </div>
+            <div className='col-4'>
+            {activities.length > 0 && <CreateTask activityCode={activities[0].ACTI_ID} />}
+            </div>
+            <div className='col-4'>
+              <CreateIncident />
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   );

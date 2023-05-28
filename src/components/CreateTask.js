@@ -1,16 +1,11 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 
-const CreateTask = () => {
-  const [name, setName] = useState('');
-  const [description, setDescription] = useState('');
+const CreateTask = (activityCode) => {
+  const [taskName, setTaskName] = useState('');
 
-  const handleNameChange = (event) => {
-    setName(event.target.value);
-  };
-
-  const handleDescriptionChange = (event) => {
-    setDescription(event.target.value);
+  const handleTaskNameChange = (event) => {
+    setTaskName(event.target.value);
   };
 
   const handleSubmit = (event) => {
@@ -18,8 +13,8 @@ const CreateTask = () => {
 
     // Realizar la solicitud POST a la API
     axios.post('http://localhost:3000/tasks', {
-      name,
-      description,
+      taskName,
+      activityCode: activityCode.activityCode,
     })
       .then((response) => {
         console.log('Tarea creada exitosamente:', response.data);
@@ -31,8 +26,7 @@ const CreateTask = () => {
       });
 
     // Restablecer los campos del formulario
-    setName('');
-    setDescription('');
+    setTaskName('');
   };
 
   return (
@@ -41,11 +35,7 @@ const CreateTask = () => {
       <form onSubmit={handleSubmit}>
         <div className="mb-3">
           <label htmlFor="name" className="form-label">Nombre:</label>
-          <input type="text" className="form-control" id="name" value={name} onChange={handleNameChange} />
-        </div>
-        <div className="mb-3">
-          <label htmlFor="description" className="form-label">Descripción:</label>
-          <textarea className="form-control" id="description" value={description} onChange={handleDescriptionChange} />
+          <input type="text" className="form-control" id="taskName" value={taskName} onChange={handleTaskNameChange} />
         </div>
         <button type="submit" className="btn btn-primary">Crear</button>
       </form>
